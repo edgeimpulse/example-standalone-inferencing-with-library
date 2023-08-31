@@ -1,0 +1,9 @@
+build/
+*.gcda
+utensor-model/
+tflite-model/
+model-parameters/
+edge-impulse-sdk/
+*.zip
+*.so
+*.o
