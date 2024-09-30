@@ -30,9 +30,11 @@ endif
 # Host specific
 ifeq ($(OS),Windows_NT)
 	MKDIR_BUILD = if not exist build mkdir build
+	LIB_EXT = .dll
 else
 	MKDIR_BUILD = mkdir -p build
 	LDFLAGS += -ldl
+	LIB_EXT = .so
 endif
 #end host specific
 
@@ -64,13 +66,13 @@ $(APP_COBJECTS) : %.o : %.c
 %.o: %.cpp
 	$(CXX) $(CFLAGS) $(CXXFLAGS) -c $^ -o $@
 
-build/libedgeimpulse.so: $(COBJECTS) $(CXXOBJECTS) $(CCOBJECTS)
+build/libedgeimpulse$(LIB_EXT): $(COBJECTS) $(CXXOBJECTS) $(CCOBJECTS)
 	$(MKDIR_BUILD)
-	$(CXX) $(COBJECTS) $(CXXOBJECTS) $(CCOBJECTS) -shared -o build/libedgeimpulse.so $(LDFLAGS)
+	$(CXX) $(COBJECTS) $(CXXOBJECTS) $(CCOBJECTS) -shared -o build/libedgeimpulse$(LIB_EXT) $(LDFLAGS)
 
-app: $(APP_COBJECTS) build/libedgeimpulse.so
+app: $(APP_COBJECTS) build/libedgeimpulse$(LIB_EXT)
 	$(MKDIR_BUILD)
-	$(CXX) $(APP_COBJECTS) build/libedgeimpulse.so -o build/$(NAME) $(LDFLAGS)
+	$(CXX) $(APP_COBJECTS) build/libedgeimpulse$(LIB_EXT) -o build/$(NAME) $(LDFLAGS)
 
 clean:
 ifeq ($(OS),Windows_NT)
@@ -78,11 +80,11 @@ ifeq ($(OS),Windows_NT)
 	del /Q $(subst /,\,$(patsubst %.cpp,%.o,$(CXXSOURCES))) >nul 2>&1 || exit 0
 	del /Q $(subst /,\,$(patsubst %.cc,%.o,$(CCSOURCES))) >nul 2>&1 || exit 0
 	del /Q $(subst /,\,$(patsubst %.c,%.o,$(APP_COBJECTS))) >nul 2>&1 || exit 0
-	del /Q build\libedgeimpulse.so >nul 2>&1 || exit 0
+	del /Q build\libedgeimpulse$(LIB_EXT) >nul 2>&1 || exit 0
 else
 	rm -f $(COBJECTS)
 	rm -f $(CCOBJECTS)
 	rm -f $(CXXOBJECTS)
 	rm -f $(APP_COBJECTS)
-	rm -f build/libedgeimpulse.so
+	rm -f build/libedgeimpulse$(LIB_EXT)
 endif
