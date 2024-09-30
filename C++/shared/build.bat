@@ -16,7 +16,8 @@ IF ERRORLEVEL 1 (
 
 echo "Building standalone classifier"
 
-mingw32-make CC=gcc -j
+mingw32-make CC=gcc -j 4
+bash install-shared-lib.sh
 
 echo "Building standalone classifier OK"
 

@@ -61,16 +61,26 @@ sh build.sh
 build.bat
 ```
 
-This will build `build/edge-impulse-standalone` and the `build/libedgeimpulse.so`
+This will build `build/edge-impulse-standalone` and the `build/libedgeimpulse.so` in case of Linux or `build/libedgeimpulse.dll` in case of Windows.
+
+After this, for C++ shared library run (both Linux and Windows):
+
+```bash
+bash install-shared-lib.sh
+```
+
+This wil create a directory
 
 
 ## Execute the application
 
-To run the built application go to the console or terminal and:
+To test how the created library builds against C++ code, we will use `test-app` directory.
 
-``` sh
-./build/edge-impulse-stadanlone
-```
+Copy the `libedgeimpulse` folder to the `test-app` folder and run `make`.
+
+This will create an executable in `build`.
+To run the executable o`n windows, copy `libedgeimpulse/lib/libedgeimpulse.dll` to `build` directory and execute. 
+
 
 E.g. if you built with the following: 
 

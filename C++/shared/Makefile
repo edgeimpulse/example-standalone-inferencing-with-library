@@ -41,6 +41,9 @@ else
 	LDFLAGS += -ldl
 endif
 
+ifeq ($(OS),Windows_NT)
+
+
 all: app
 
 .PHONY: app clean

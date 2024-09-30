@@ -4,6 +4,7 @@ utensor-model/
 tflite-model/
 model-parameters/
 edge-impulse-sdk/
+libedgeimpulse/
 *.zip
 *.so
 *.o
