@@ -6,7 +6,7 @@ This repository demonstrates pre-compiling the Edge Impulse's C++ library export
 
 See `shared/` for example of linking with precompiled shared Edge Impulse library and see `static` for an example with linking with a statically linked library.
 
-## Getting Started 
+## Getting Started
 
 > To build only the library skip this step and jump to **Build your [static|shared] library and link with application**
 
@@ -72,10 +72,10 @@ To run the built application go to the console or terminal and:
 ./build/edge-impulse-stadanlone
 ```
 
-E.g. if you built with the following: 
+E.g. if you built with the following:
 
 - Project: [Tutorial: Continuous Motion Recoginition](https://studio.edgeimpulse.com/public/14299/latest)
-- Docs: [Tutorial: Continuous Motion Recoginition]( https://docs.edgeimpulse.com/docs/tutorials/end-to-end-tutorials/continuous-motion-recognition) 
+- Docs: [Tutorial: Continuous Motion Recoginition]( https://docs.edgeimpulse.com/docs/tutorials/end-to-end-tutorials/continuous-motion-recognition)
 - Sample: `updown.1.cbor.1q53q9pl` at timestample `0`
 
 you'd get similar results as below:
@@ -108,13 +108,9 @@ CC=clang CXX=clang++ make -j
 This repo builds the application by default for your computer (x86). However this can easily adapted for your (embedded) target. Edit `Makefile` for your target. See e.g. "Target specific" in `Makefile`.
 
 
-## Further reading 
+## Further reading
 
 - [Running your impulse locally -> Using the library from C](https://docs.edgeimpulse.com/docs/run-inference/cpp-library/running-your-impulse-locally#using-the-library-from-c).
 - [Deploy your model as a C++ library](https://docs.edgeimpulse.com/docs/deployment/running-your-impulse-locally/running-your-impulse-locally)
 - [Edge Impulse for Linux](https://docs.edgeimpulse.com/docs/tools/edge-impulse-for-linux)
 - [fully-supported-development-boards](https://docs.edgeimpulse.com/docs/development-platforms/fully-supported-development-boards).
-
-## License
-
- [Apache License v2.0](https://www.apache.org/licenses/LICENSE-2.0)
